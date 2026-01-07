@@ -27,6 +27,16 @@
             line-height: 1.6;
             overflow-x: hidden;
             background: var(--light);
+            max-width: 100%;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
         }
 
         h1, h2, h3, h4 {
@@ -175,10 +185,10 @@
         .hero-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
             position: relative;
             z-index: 1;
@@ -306,19 +316,19 @@
 
         /* Services Section */
         .services {
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .section-header h2 {
             font-size: 2.5rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             font-weight: 900;
         }
 
@@ -403,7 +413,7 @@
         .location {
             background: var(--secondary);
             color: white;
-            padding: 3.5rem 2rem;
+            padding: 3rem 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -453,7 +463,7 @@
 
         /* Why Choose Section */
         .why-choose {
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             background: white;
         }
 
@@ -511,7 +521,7 @@
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 3.5rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             color: white;
             position: relative;
@@ -710,16 +720,118 @@
                 margin-top: 1rem;
             }
 
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+
+            .hero-content {
+                padding: 2rem 1rem;
+                gap: 2rem;
+            }
+
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
             }
 
             .hero-text p {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .primary-btn, .secondary-btn {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 2rem;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            .services {
+                padding: 2rem 1rem;
             }
 
             .section-header h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .section-header {
+                margin-bottom: 1.5rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .location {
+                padding: 2rem 1rem;
+            }
+
+            .location h2 {
+                font-size: 1.8rem;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .why-choose {
+                padding: 2rem 1rem;
+            }
+
+            .why-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .why-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .feature-item {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-content p {
+                font-size: 1rem;
             }
 
             .cta-form {
@@ -728,6 +840,83 @@
 
             .cta-form input {
                 min-width: 100%;
+            }
+
+            footer {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            /* Coverage area mobile fixes */
+            .location-content > div[style*="margin-top: 4rem"] {
+                padding: 1.5rem !important;
+                margin-top: 2rem !important;
+            }
+
+            .location-content > div > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+
+            .location-content h3 {
+                font-size: 1.3rem !important;
+            }
+
+            .location-content h4 {
+                font-size: 1.1rem !important;
+            }
+
+            .location-content div[style*="grid-template-columns: 1fr 1fr"] div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Package cards mobile */
+            section > div > div[style*="grid-template-columns: repeat(auto-fit"] {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            /* Fix any content that might overflow */
+            * {
+                max-width: 100vw;
+                overflow-x: visible;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Tighter mobile spacing */
+            .hero-card {
+                padding: 1.5rem;
+            }
+
+            h1, h2, h3 {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            /* Smart Agents section mobile */
+            section[style*="background: var(--light)"] > div > div[style*="padding: 3rem"] {
+                padding: 1.5rem !important;
+            }
+
+            /* Package cards mobile */
+            section[style*="background: white"] div[style*="padding: 2.5rem"] {
+                padding: 1.5rem !important;
+            }
+
+            /* Reduce all section padding on mobile */
+            section[style*="padding: 3rem"] {
+                padding: 2rem 1rem !important;
+            }
+
+            section[style*="padding: 4rem"] {
+                padding: 2rem 1rem !important;
             }
         }
     </style>
@@ -851,14 +1040,14 @@
     </section>
 
     <!-- Packages Section -->
-    <section style="background: white; padding: 4rem 2rem;">
+    <section style="background: white; padding: 3rem 2rem;">
         <div style="max-width: 1400px; margin: 0 auto;">
             <div class="section-header">
                 <h2>Simple, Smart Pricing</h2>
                 <p>Choose a package or let us customize the perfect solution for your listing</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
                 
                 <!-- Package 1: Core -->
                 <div style="background: var(--light); border-radius: 20px; padding: 2.5rem; position: relative; border: 2px solid transparent; transition: all 0.3s;">
@@ -979,7 +1168,7 @@
     </section>
 
     <!-- Smart Buyer Notice Section -->
-    <section style="background: var(--light); padding: 4rem 2rem;">
+    <section style="background: var(--light); padding: 3rem 2rem;">
         <div style="max-width: 900px; margin: 0 auto; text-align: center;">
             <div style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); border-left: 6px solid var(--primary);">
                 <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--dark);">💡 Smart Agents Call Us Direct</h2>
