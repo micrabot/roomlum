@@ -85,6 +85,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -1px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
         }
 
         .nav-links {
@@ -924,7 +932,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">ROOMLUM</div>
+            <a href="#" class="logo" style="text-decoration: none;">ROOMLUM</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
