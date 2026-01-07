@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOMLUM | Real Estate Photography & 3D Tours - Buffalo & Niagara Falls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --accent: #FFD23F;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #004E89 0%, #1A1A2E 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 210, 63, 0.1), transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .primary-btn, .secondary-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .primary-btn {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .primary-btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.3);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .secondary-btn:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 900;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--dark);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Location Section */
+        .location {
+            background: var(--secondary);
+            color: white;
+            padding: 3.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255, 107, 53, 0.1));
+        }
+
+        .location-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .location h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .location-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .location-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .why-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(0, 78, 137, 0.05));
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text p {
+            color: var(--gray);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 3.5rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 210, 63, 0.2), transparent);
+            top: -250px;
+            right: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) rotate(5deg); }
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .cta-form button {
+            padding: 1rem 2.5rem;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .cta-form button:hover {
+            background: white;
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-content, .location-grid, .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                pointer-events: none;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links li {
+                text-align: center;
+            }
+
+            .nav-links .cta-button {
+                display: inline-block;
+                margin-top: 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .cta-form input {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ROOMLUM</div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#coverage">Coverage</a></li>
+                <li><span style="color: var(--primary); font-weight: 600;">Now Hiring</span></li>
+                <li><a class="cta-button" href="#contact">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Make Your Listings <span class="highlight">Impossible to Ignore</span></h1>
+                <p>Professional photography, immersive 3D tours, and precision floor plans that sell properties faster in Buffalo and Niagara Falls.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="primary-btn">Book Your Shoot</a>
+                    <a href="#services" class="secondary-btn">View Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <h3 style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">What You Get</h3>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">Same Day</div>
+                            <div class="stat-label">Turnaround</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4K</div>
+                            <div class="stat-label">Photography</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2D/3D</div>
+                            <div class="stat-label">Floor Plans</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">360° 3D</div>
+                            <div class="stat-label">Walkthroughs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Everything You Need to Sell</h2>
+            <p>Complete visual marketing packages designed for real estate professionals and small businesses</p>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3>Professional Photography</h3>
+                <p>Stunning 4K HDR images that showcase properties in the best light. Every room, every angle, perfectly captured.</p>
+                <ul class="service-features">
+                    <li>HDR interior & exterior shots</li>
+                    <li>Twilight photography</li>
+                    <li>Drone aerial views</li>
+                    <li>Same-day delivery</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>3D Virtual Tours</h3>
+                <p>Choose the perfect solution for your listing. Matterport for premium showcases or 3D Home for maximum platform compatibility. Both deliver immersive experiences buyers love.</p>
+                <ul class="service-features">
+                    <li>Matterport Pro2 & Pro3 cameras</li>
+                    <li>3D Home (Zillow-compatible)</li>
+                    <li>Works on ALL major platforms</li>
+                    <li>Free property website included</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Floor Plans</h3>
+                <p>Accurate, professional floor plans that help buyers understand the space and layout at a glance.</p>
+                <ul class="service-features">
+                    <li>2D & 3D floor plans</li>
+                    <li>Room dimensions</li>
+                    <li>Total square footage</li>
+                    <li>MLS-ready formats</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="margin-top: 4rem; text-align: center;">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--dark);">Plus These Add-Ons</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto;">
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(0, 78, 137, 0.05)); padding: 2rem; border-radius: 16px;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎥</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Video Tours</h4>
+                    <p style="color: var(--gray); font-size: 0.95rem;">Cinematic walkthroughs that tell the property's story</p>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(0, 78, 137, 0.05)); padding: 2rem; border-radius: 16px;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🚁</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Drone Aerials</h4>
+                    <p style="color: var(--gray); font-size: 0.95rem;">Stunning aerial photography & video of property and neighborhood</p>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(0, 78, 137, 0.05)); padding: 2rem; border-radius: 16px;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Social Media Eye Candy</h4>
+                    <p style="color: var(--gray); font-size: 0.95rem;">Vertical reels, stories, and posts optimized for engagement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section style="background: white; padding: 4rem 2rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>Simple, Smart Pricing</h2>
+                <p>Choose a package or let us customize the perfect solution for your listing</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                
+                <!-- Package 1: Core -->
+                <div style="background: var(--light); border-radius: 20px; padding: 2.5rem; position: relative; border: 2px solid transparent; transition: all 0.3s;">
+                    <div style="position: absolute; top: -15px; right: 20px; background: var(--primary); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem;">BEST VALUE</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--dark);">Roomlum Core</h3>
+                    <div style="margin: 1.5rem 0;">
+                        <span style="font-size: 3rem; font-weight: 900; color: var(--primary); font-family: 'Outfit', sans-serif;">$195</span>
+                        <span style="text-decoration: line-through; color: var(--gray); font-size: 1.2rem; margin-left: 0.5rem;">$395</span>
+                    </div>
+                    <ul style="list-style: none; margin: 2rem 0; line-height: 2.2;">
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">✓</span>
+                            35+ Professional Photos
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">✓</span>
+                            3D Virtual Tour
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">✓</span>
+                            2D & 3D Floor Plans
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">✓</span>
+                            All Room Measurements
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">✓</span>
+                            Free Property Website
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">✓</span>
+                            Same-Day Delivery Available
+                        </li>
+                    </ul>
+                    <a href="#contact" style="display: block; text-align: center; background: var(--primary); color: white; padding: 1rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Book Now</a>
+                </div>
+
+                <!-- Package 2: Plus -->
+                <div style="background: linear-gradient(135deg, var(--secondary), #003366); border-radius: 20px; padding: 2.5rem; color: white; border: 2px solid var(--accent); box-shadow: 0 15px 40px rgba(0, 78, 137, 0.3); transform: scale(1.05); position: relative;">
+                    <div style="position: absolute; top: -15px; right: 20px; background: var(--accent); color: var(--dark); padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem;">MOST POPULAR</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: white;">Roomlum Plus</h3>
+                    <div style="margin: 1.5rem 0;">
+                        <span style="font-size: 3rem; font-weight: 900; color: var(--accent); font-family: 'Outfit', sans-serif;">$395</span>
+                        <span style="text-decoration: line-through; color: rgba(255, 255, 255, 0.6); font-size: 1.2rem; margin-left: 0.5rem;">$595</span>
+                    </div>
+                    <ul style="list-style: none; margin: 2rem 0; line-height: 2.2;">
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                            40+ Professional Photos
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                            Matterport Pro2/Pro3 3D Tour
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                            Colorized 3D Floor Plan
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                            Lot Layout & Features
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                            Video Slideshow with Music
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                            Free Property Website
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">✓</span>
+                            Same-Day Delivery Available
+                        </li>
+                    </ul>
+                    <a href="#contact" style="display: block; text-align: center; background: var(--accent); color: var(--dark); padding: 1rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Book Now</a>
+                </div>
+
+                <!-- Custom Package -->
+                <div style="background: var(--light); border-radius: 20px; padding: 2.5rem; border: 2px dashed var(--gray); position: relative;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--dark);">Custom Package</h3>
+                    <div style="margin: 1.5rem 0;">
+                        <span style="font-size: 2rem; font-weight: 700; color: var(--secondary); font-family: 'Outfit', sans-serif;">Let's Talk</span>
+                    </div>
+                    <p style="color: var(--gray); line-height: 1.8; margin: 2rem 0;">Every property is unique. We'll customize a package with exactly what your listing needs:</p>
+                    <ul style="list-style: none; margin: 2rem 0; line-height: 2.2; color: var(--dark);">
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--secondary);">•</span>
+                            Drone aerial photography
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--secondary);">•</span>
+                            Twilight exterior shots
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--secondary);">•</span>
+                            Social media content
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--secondary);">•</span>
+                            Video walkthroughs
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--secondary);">•</span>
+                            Virtual staging
+                        </li>
+                        <li style="position: relative; padding-left: 1.8rem;">
+                            <span style="position: absolute; left: 0; color: var(--secondary);">•</span>
+                            And more...
+                        </li>
+                    </ul>
+                    <a href="tel:716-455-2400" style="display: block; text-align: center; background: var(--secondary); color: white; padding: 1rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Call (716) 455-2400</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Buyer Notice Section -->
+    <section style="background: var(--light); padding: 4rem 2rem;">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <div style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); border-left: 6px solid var(--primary);">
+                <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--dark);">💡 Smart Agents Call Us Direct</h2>
+                <p style="font-size: 1.2rem; color: var(--gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                    We're trusted by national photo hubs like <strong>Snappr</strong> and others—but when you book through them, they take a hefty cut.
+                </p>
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 78, 137, 0.1)); padding: 2rem; border-radius: 12px; margin-top: 1.5rem;">
+                    <p style="font-size: 1.4rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem;">
+                        Save 50% by calling ROOMLUM directly
+                    </p>
+                    <p style="color: var(--gray); font-size: 1.05rem;">
+                        Get the same premium quality, faster turnaround, and a more customized solution tailored to your specific property and needs—without the middleman markup.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="why-choose">
+        <div class="why-content">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Why Agents Choose ROOMLUM</h2>
+                <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 2rem;">We're not just photographers—we're your marketing partner. Every service is designed to help you close faster and stand out in a crowded market.</p>
+            </div>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">
+                        <h4>Lightning Fast Turnaround</h4>
+                        <p>24-hour delivery standard. Same-day available for urgent listings.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-text">
+                        <h4>Premium Quality</h4>
+                        <p>Professional equipment and expert editing make every property shine.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-text">
+                        <h4>All-In-One Solution</h4>
+                        <p>Photos, tours, floor plans—everything you need in one appointment.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <div class="feature-text">
+                        <h4>Local & Reliable</h4>
+                        <p>Western New York based. We show up on time, every time.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Make Your Next Listing Stand Out?</h2>
+            <p>Get professional photography and 3D tours that actually get properties sold. Call us now or text for fastest response.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap;">
+                <a href="tel:716-455-2400" style="display: inline-block; background: var(--dark); color: white; padding: 1.25rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: all 0.3s; border: 3px solid var(--dark);">
+                    📞 Call (716) 455-2400
+                </a>
+                <a href="sms:716-455-2400" style="display: inline-block; background: white; color: var(--dark); padding: 1.25rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: all 0.3s; border: 3px solid white;">
+                    💬 Text Us
+                </a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">Available 7 days a week • Same-day appointments available</p>
+        </div>
+    </section>
+    <section id="coverage" class="location">
+        <div class="location-content">
+            <h2>Proudly Serving All of Western New York</h2>
+            <p style="font-size: 1.2rem; max-width: 800px;">Fast, reliable service across Erie and Niagara Counties. Local expertise, professional results, same-day turnaround available.</p>
+            
+            <div class="location-grid">
+                <div class="location-card">
+                    <h3>Real Estate Agents</h3>
+                    <p>Get your listings photographed, toured, and ready to market in 24 hours. Every package includes a free dedicated property website. We understand the pressure of launch days and competitive markets. Same-day turnaround available for rush orders.</p>
+                </div>
+                <div class="location-card">
+                    <h3>Small Business</h3>
+                    <p>Showcase your space with professional virtual tours perfect for Google Business Profile, websites, and marketing. Help customers visualize your location before they visit.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15);">
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--accent); text-align: center;">Our Complete Service Area</h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+                    <div>
+                        <h4 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Erie County</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; color: rgba(255, 255, 255, 0.9); line-height: 2;">
+                            <div>
+                                <p>• Buffalo</p>
+                                <p>• Amherst</p>
+                                <p>• Cheektowaga</p>
+                                <p>• Clarence</p>
+                                <p>• Hamburg</p>
+                                <p>• Lancaster</p>
+                                <p>• Orchard Park</p>
+                                <p>• Tonawanda</p>
+                                <p>• West Seneca</p>
+                                <p>• Williamsville</p>
+                            </div>
+                            <div>
+                                <p>• East Aurora</p>
+                                <p>• Grand Island</p>
+                                <p>• Depew</p>
+                                <p>• Lackawanna</p>
+                                <p>• Kenmore</p>
+                                <p>• Angola</p>
+                                <p>• Blasdell</p>
+                                <p>• Sloan</p>
+                                <p>• Alden</p>
+                                <p>• Elma</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: white; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Niagara County</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; color: rgba(255, 255, 255, 0.9); line-height: 2;">
+                            <div>
+                                <p>• Niagara Falls</p>
+                                <p>• Lockport</p>
+                                <p>• North Tonawanda</p>
+                                <p>• Lewiston</p>
+                                <p>• Youngstown</p>
+                                <p>• Sanborn</p>
+                                <p>• Wheatfield</p>
+                            </div>
+                            <div>
+                                <p>• Newfane</p>
+                                <p>• Wilson</p>
+                                <p>• Ransomville</p>
+                                <p>• Gasport</p>
+                                <p>• Middleport</p>
+                                <p>• Barker</p>
+                                <p>• Olcott</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: rgba(255, 255, 255, 0.8);">
+                    Don't see your town? We cover all of Western New York. <strong>Call us at (716) 455-2400</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+            </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ROOMLUM</h3>
+                <p>Professional real estate photography, 3D tours, and floor plans for Buffalo and Niagara Falls. Making properties look their absolute best.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Photography</a></li>
+                    <li><a href="#services">3D Tours</a></li>
+                    <li><a href="#services">Floor Plans</a></li>
+                    <li><a href="#services">Packages</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#why-us">About Us</a></li>
+                    <li><a href="#coverage">Service Area</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#a8c1c6cec7e8dac7c7c5c4ddc586cbc7c5">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ROOMLUM. All rights reserved. Serving Buffalo & Niagara Falls, NY</p>
+              </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
